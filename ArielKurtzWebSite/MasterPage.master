@@ -9,10 +9,21 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
+    <form runat="server">
 
-    <h1>ihidhhtgorh</h1>
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
+        <!-- תפריט הראשי -->
+        <nav>
+            
+                <a href="Default.aspx">דף הבית</a>
+                <a href="HtmlPage2.html">טבלה</a>
+                <a href="HtmlPage1.html">form</a>
+                <a href="HtmlPage.html">מה זה עריכה?</a>
+            
+        </nav>
+
+        <!-- אזור התוכן של הדפים -->
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server" />
+
+    </form>
 </body>
 </html>

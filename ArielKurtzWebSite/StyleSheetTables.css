@@ -1,0 +1,34 @@
+﻿body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+}
+
+/* הטבלה עצמה */
+.table-basic {
+    border-collapse: collapse; /* מחבר גבולות לתחושה "אחת" */
+    width: 100%; /* טבלה על כל הרוחב */
+}
+
+    /* תאים וכותרות */
+    .table-basic th,
+    .table-basic td {
+        border: 1px solid #ddd; /* קו אפור דק בין התאים */
+        padding: 12px 15px; /* רווח נחמד בטבלה */
+        text-align: left; /* טקסט מיושר לשמאל */
+    }
+
+    /* שורת כותרת */
+    .table-basic th {
+        background-color: #f2f2f2; /* אפור בהיר */
+        font-weight: bold;
+    }
+
+    /* שורות זוגיות – אפור עדין */
+    .table-basic tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    /* אפקט מעבר עם העכבר */
+    .table-basic tr:hover {
+        background-color: #f1f1f1;
+    }
