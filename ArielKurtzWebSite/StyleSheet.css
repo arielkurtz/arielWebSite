@@ -1,0 +1,26 @@
+﻿body {
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+    /* תפריט כחול */
+    .main-nav {
+        background: linear-gradient(90deg, #0B2A5A, #0A3D8F);
+        padding: 14px 16px;
+        display: flex;
+        gap: 12px;
+        justify-content: flex-start; /* ב-RTL יושב ימין */
+    }
+
+    .nav-link {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 12px;
+        border-radius: 12px;
+        font-weight: 700;
+    }
+
+        .nav-link:hover {
+            background: rgba(255,255,255,.12);
+        }
+}

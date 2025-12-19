@@ -1,28 +1,29 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
-
 <!DOCTYPE html>
 
-<html>
+<html dir="rtl" runat="server">
 <head runat="server">
     <title></title>
-    <asp:ContentPlaceHolder id="head" runat="server">
+
+    <link runat="server" href="~/StyleSheet2.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
+
+<body runat="server">
     <form runat="server">
 
-        <!-- תפריט הראשי -->
-        <nav>
-            
-                <a href="Default.aspx">דף הבית</a>
-                <a href="HtmlPage2.html">טבלה</a>
-                <a href="HtmlPage1.html">form</a>
-                <a href="HtmlPage.html">מה זה עריכה?</a>
-            
+        <nav class="main-nav">
+            <a class="nav-link" href="Default3.aspx">טבלה</a>
+            <a class="nav-link" href="Default2.aspx">form</a>
+            <a class="nav-link" href="Default.aspx">מה זה עריכה?</a>
         </nav>
 
-        <!-- אזור התוכן של הדפים -->
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server" />
+        <div class="page-fade">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
 
     </form>
 </body>
