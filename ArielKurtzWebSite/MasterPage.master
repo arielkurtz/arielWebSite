@@ -16,8 +16,9 @@
 
         <nav class="main-nav">
             <a class="nav-link" href="Default3.aspx">טבלה</a>
-            <a class="nav-link" href="Default2.aspx">form</a>
             <a class="nav-link" href="Default.aspx">מה זה עריכה?</a>
+            <a class="nav-link" href="Default2.aspx">sign up</a>
+            <a class="nav-link" href="login.aspx">login</a>
         </nav>
 
         <div class="page-fade">
