@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master"
-    AutoEventWireup="true" CodeFile="Default2.aspx.cs" Inherits="Default2" %>
+    AutoEventWireup="true" CodeFile="signUp.aspx.cs" Inherits="Default2" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <script src="javaScript/JavaScript.js"></script>
+    <script src="../javaScript/JavaScript.js"></script>
 
     <!-- CSS לשגיאות -->
     <style>
@@ -28,7 +28,7 @@
             <!-- Username -->
             <label for="username"><b>Username</b></label>
             <input id="username" type="text" placeholder="Enter Username" name="username" required />
-            <small id="err-username" class="field-error"></small>
+            <small id="err-username" class="field-error"></small> 
 
             <!-- Password -->
             <label for="psw"><b>Password</b></label>
