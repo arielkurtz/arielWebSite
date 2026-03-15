@@ -14,12 +14,18 @@
 <body runat="server">
     <form runat="server">
 
-        <nav class="main-nav">
-            <a class="nav-link" href="table.aspx">מגוון תוכנות</a>
-            <a class="nav-link" href="Edit.aspx">מה זה עריכה?</a>
-            <a class="nav-link" href="signUP.aspx">sign up</a>
-            <a class="nav-link" href="login.aspx">login</a>
-        </nav>
+       <nav class="main-nav">
+    <a id="lnkHome" runat="server" class="nav-link" href="~/contentPages/Edit.aspx">main</a>
+    <a id="lnkTable" runat="server" class="nav-link" href="~/contentPages/table.aspx">מגוון תוכנות</a>
+    <a id="lnkSignUp" runat="server" class="nav-link" href="~/contentPages/signUp.aspx">sign up</a>
+    <a id="lnkLogin" runat="server" class="nav-link" href="~/contentPages/login.aspx">login</a>
+</nav>
+
+        <div class="top-user-area" style="text-align:left; padding:10px;">
+            <asp:Label ID="lblUserStatus" runat="server"></asp:Label>
+            &nbsp;
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
+        </div>
 
         <div class="page-fade">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

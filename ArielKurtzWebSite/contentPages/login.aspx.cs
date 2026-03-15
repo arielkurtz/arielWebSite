@@ -9,20 +9,20 @@ public partial class login : System.Web.UI.Page
             string u = Request.Form["userName"];
             string p = Request.Form["password"];
 
-            // הגנה קטנה נגד null
             if (u == null) u = "";
             if (p == null) p = "";
 
-            // 3 משתמשים וסיסמאות קבועים (תשנה למה שהמורה דורש אם יש ספציפי)
             bool ok =
-                (u == "Gilad" && p == "1968") ||
+                (u == "Gilad" && p == "R!47598") ||
                 (u == "Dana" && p == "1234") ||
                 (u == "Noam" && p == "abcd");
 
             if (ok)
             {
-                divMsg.InnerHtml = "ברוך הבא " + u;
-                divMsg.Style["color"] = "green";
+                Session["userName"] = u;
+                Session["login"] = true;
+
+                Response.Redirect("~/contentPages/Edit.aspx");
             }
             else
             {

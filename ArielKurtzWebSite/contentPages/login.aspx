@@ -5,21 +5,27 @@
     Inherits="login" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript" src="/login.js?v=2"></script>
+
     <style>
-        .field-error{
-            display:block;
-            margin:4px 0 10px;
-            font-size:12px;
-            color:#d10000;
-            min-height:16px;
+        .field-error {
+            display: block;
+            font-size: 12px;
+            color: red;
+            margin-top: 4px;
+            min-height: 16px;
         }
-        .invalid{
-            border:1px solid #d10000 !important;
-            outline:none;
+
+        .invalid {
+            border: 1px solid red !important;
         }
-        #divMsg{
-            margin-top:10px;
-            font-weight:700;
+
+        #divMsg {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            min-height: 20px;
+            color: red;
         }
     </style>
 </asp:Content>
@@ -30,33 +36,38 @@
         <div class="auth-card">
 
             <h1 class="auth-title">Login</h1>
-            <p class="auth-subtitle">Please enter your username and password to log in.</p>
+            <p class="auth-subtitle">
+                Please enter your username and password to log in.
+            </p>
 
             <hr class="auth-hr" />
 
-            <!-- Username -->
-            <label for="userName"><b>Username</b></label>
-            <!-- חשוב: name="userName" כדי ש-Request.Form["userName"] יעבוד -->
-            <input id="userName" name="userName" type="text" placeholder="Enter Username" />
-            <small id="userNameMsg" class="field-error"></small>
+            <label for="username"><b>Username</b></label>
+            <input id="username"
+                   name="userName"
+                   type="text"
+                   placeholder="Enter Username"
+                   oninput="userNameLoginVal()" />
+            <small id="err-username" class="field-error"></small>
 
-            <!-- Password -->
             <label for="password"><b>Password</b></label>
-            <!-- חשוב: name="password" כדי ש-Request.Form["password"] יעבוד -->
-            <input id="password" name="password" type="password" placeholder="Enter Password" />
-            <small id="passwordMsg" class="field-error"></small>
+            <input id="password"
+                   name="password"
+                   type="password"
+                   placeholder="Enter Password"
+                   oninput="passwordLoginVal()" />
+            <small id="err-password" class="field-error"></small>
 
-            <!-- הודעה מהשרת -->
             <div id="divMsg" runat="server"></div>
 
             <div class="auth-actions">
-                <button type="reset" class="btn-secondary">Reset</button>
-                <button type="submit" class="btn-primary">Submit</button>
+                <button type="reset" class="btn-secondary" onclick="clearLoginErrors()">Reset</button>
+                <button type="submit" class="btn-primary" onclick="return submitFun();">Submit</button>
             </div>
 
             <p class="auth-note">
                 Don’t have an account?
-                <a href="Default2.aspx">Sign Up</a>
+                <a href="signUp.aspx">Sign Up</a>
             </p>
 
         </div>

@@ -1,29 +1,24 @@
 ﻿using System;
-using System.Web.UI.WebControls;
+using System.Collections;
 
 public partial class signUp : System.Web.UI.Page
 {
     protected void btnSignUp_Click(object sender, EventArgs e)
     {
-        Page.Validate("signup");
-        if (!Page.IsValid) return;
+        string userName = username.Text.Trim();
+        string password = psw.Text;
 
-        // אם הכל תקין - כאן תמשיך (שמירה/הפניה וכו')
-        // Response.Redirect("login.aspx");
-    }
+        Hashtable users = (Hashtable)Application["users"];
 
-    protected void cvNoTriple_ServerValidate(object source, ServerValidateEventArgs args)
-    {
-        string s = args.Value ?? "";
-        args.IsValid = true;
-
-        for (int i = 2; i < s.Length; i++)
+        if (!users.ContainsKey(userName))
         {
-            if (s[i] == s[i - 1] && s[i - 1] == s[i - 2])
-            {
-                args.IsValid = false;
-                return;
-            }
+            users[userName] = password;
+            Application["users"] = users;
         }
+
+        Session["userName"] = userName;
+        Session["login"] = true;
+
+        Response.Redirect("~/Default4.aspx");
     }
 }
