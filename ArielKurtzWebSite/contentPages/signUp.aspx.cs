@@ -1,24 +1,26 @@
 ﻿using System;
-using System.Collections;
 
 public partial class signUp : System.Web.UI.Page
 {
     protected void btnSignUp_Click(object sender, EventArgs e)
     {
-        string userName = username.Text.Trim();
-        string password = psw.Text;
+        User u = new User();
 
-        Hashtable users = (Hashtable)Application["users"];
+        u.username = username.Text.Trim();
+        u.password = psw.Text;
 
-        if (!users.ContainsKey(userName))
-        {
-            users[userName] = password;
-            Application["users"] = users;
-        }
+        u.firstName = Request.Form["firstName"];
+        u.lastName = Request.Form["lastName"];
+        u.dob = Request.Form["dob"];
+        u.city = Request.Form["city"];
+        u.phone = Request.Form["phone"];
+        u.email = Request.Form["email"];
 
-        Session["userName"] = userName;
-        Session["login"] = true;
+        Helper.ExecuteNonQuery(u.Insert());
 
-        Response.Redirect("~/Default4.aspx");
+        Session["userName"] = u.username;
+        Session["Login"] = true;
+
+        Response.Redirect("~/contentPages/Edit.aspx");
     }
 }

@@ -180,11 +180,8 @@ function phoneVal() {
         return setErr("phone", "err-phone", "יש להזין מספר טלפון");
     }
 
-    if (phone.indexOf("-") == -1) {
-        return setErr("phone", "err-phone", "המספר חייב לכלול מקף (לדוגמה: 03-1234567)");
-    }
-
-    var reg = /^(0[2-4689]|0[1-46-9]|05\d|07\d)-\d{7}$/;
+    // regex בלי מקף
+    var reg = /^0(2|3|4|8|9|[1-9]|5\d|7\d)\d{7}$/;
 
     if (!reg.test(phone)) {
         return setErr("phone", "err-phone", "מספר טלפון לא תקין");
