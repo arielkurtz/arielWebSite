@@ -194,19 +194,22 @@ function phoneVal() {
 // אימייל
 function emailVal() {
 
-    var email = document.getElementById("email").value.trim();
+    var email = document.getElementById("email").value;
+
+    // ניקוי רווחים ותווים נסתרים של עברית/אנגלית
+    email = email.replace(/[\u200E\u200F\u202A-\u202E]/g, "").trim();
 
     if (email.length == 0) {
-        return setErr("email", "err-email", "יש להזין כתובת דוא\"ל");
+        return setErr("email", "err-email", "נא להזין כתובת אימייל");
     }
 
-    var reg = /^[A-Za-z][A-Za-z0-9_\-\.]*@[A-Za-z][A-Za-z0-9_\-\.]*\.\d{2,3}$/;
+    var reg = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
-    if (!reg.test(email)) {
-        return setErr("email", "err-email", "כתובת דוא\"ל לא תקינה");
+    if (reg.test(email)) {
+        return clearErr("email", "err-email");
     }
 
-    return clearErr("email", "err-email");
+    return setErr("email", "err-email", "כתובת דוא״ל לא תקינה");
 }
 
 

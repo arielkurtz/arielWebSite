@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data.SqlClient;
+using System.Configuration;
 
 public partial class login : System.Web.UI.Page
 {
@@ -12,22 +14,31 @@ public partial class login : System.Web.UI.Page
             if (u == null) u = "";
             if (p == null) p = "";
 
-            bool ok =
-                (u == "Gilad" && p == "R!47598") ||
-                (u == "Dana" && p == "1234") ||
-                (u == "Noam" && p == "abcd");
+            string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True";
 
-            if (ok)
+            using (SqlConnection con = new SqlConnection(connStr))
             {
-                Session["userName"] = u;
-                Session["login"] = true;
+                string sql = "SELECT COUNT(*) FROM users WHERE username=@username AND password=@password";
 
-                Response.Redirect("~/contentPages/Edit.aspx");
-            }
-            else
-            {
-                divMsg.InnerHtml = "שם משתמש לא מוכר או סיסמה שגויה";
-                divMsg.Style["color"] = "red";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@username", u);
+                cmd.Parameters.AddWithValue("@password", p);
+
+                con.Open();
+                int count = (int)cmd.ExecuteScalar();
+
+                if (count > 0)
+                {
+                    Session["userName"] = u;
+                    Session["login"] = true;
+
+                    Response.Redirect("~/contentPages/Edit.aspx");
+                }
+                else
+                {
+                    divMsg.InnerHtml = "שם משתמש לא מוכר או סיסמה שגויה";
+                    divMsg.Style["color"] = "red";
+                }
             }
         }
     }

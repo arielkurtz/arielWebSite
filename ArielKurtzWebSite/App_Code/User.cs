@@ -12,13 +12,13 @@
     public string Insert()
     {
         return "INSERT INTO users (username, password, firstName, lastName, dob, city, phone, email) VALUES (" +
-               "'" + username + "'," +
-               "'" + password + "'," +
-               "'" + firstName + "'," +
-               "'" + lastName + "'," +
-               "'" + dob + "'," +
-               "'" + city + "'," +
-               "'" + phone + "'," +
-               "'" + email + "')";
+               "N'" + username + "', " +
+               "N'" + password + "', " +
+               "N'" + firstName + "', " +
+               "N'" + lastName + "', " +
+               "N'" + dob + "', " +
+               "N'" + city + "', " +
+               "N'" + phone + "', " +
+               "N'" + email + "')";
     }
 }

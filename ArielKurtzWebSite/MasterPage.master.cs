@@ -18,17 +18,29 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
         if (isLoggedIn)
         {
+            // קיימים
             lnkTable.Visible = true;
             btnLogout.Visible = true;
             lnkLogin.Visible = false;
             lnkSignUp.Visible = false;
+
+            // חדשים
+            lnkBasics.Visible = true;
+            lnkTimeline.Visible = true;
+            lnkSound.Visible = true;
         }
         else
         {
+            // קיימים
             lnkTable.Visible = false;
             btnLogout.Visible = false;
             lnkLogin.Visible = true;
             lnkSignUp.Visible = true;
+
+            // חדשים
+            lnkBasics.Visible = false;
+            lnkTimeline.Visible = false;
+            lnkSound.Visible = false;
         }
     }
 

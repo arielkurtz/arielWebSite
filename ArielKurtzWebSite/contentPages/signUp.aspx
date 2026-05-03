@@ -82,9 +82,41 @@
             <small id="err-phone" class="field-error"></small>
 
             <!-- Email -->
-            <label for="email"><b>Email</b></label>
-            <input id="email" type="text" placeholder="Enter Email" name="email" />
-            <small id="err-email" class="field-error"></small>
+<label for="email"><b>Email</b></label>
+<input id="email"
+       name="email"
+       type="text"
+       placeholder="Enter Email"
+       oninput="emailVal()" />
+
+<small id="err-email" class="field-error"></small>
+
+<script>
+    function emailVal() {
+        var emailInput = document.getElementById("email");
+        var err = document.getElementById("err-email");
+
+        var email = emailInput.value.replace(/[\u200E\u200F\u202A-\u202E]/g, "").trim();
+
+        var reg = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+        if (email.length === 0) {
+            err.innerHTML = "נא להזין כתובת אימייל";
+            emailInput.classList.add("invalid");
+            return false;
+        }
+
+        if (!reg.test(email)) {
+            err.innerHTML = "כתובת דוא״ל לא תקינה";
+            emailInput.classList.add("invalid");
+            return false;
+        }
+
+        err.innerHTML = "";
+        emailInput.classList.remove("invalid");
+        return true;
+    }
+</script>
 
             <div class="auth-row">
                 <input id="remember" type="checkbox" checked="checked" name="remember" />

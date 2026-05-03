@@ -19,7 +19,7 @@ public partial class signUp : System.Web.UI.Page
         Helper.ExecuteNonQuery(u.Insert());
 
         Session["userName"] = u.username;
-        Session["Login"] = true;
+        Session["login"] = true;
 
         Response.Redirect("~/contentPages/Edit.aspx");
     }
